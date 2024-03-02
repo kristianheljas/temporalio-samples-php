@@ -100,9 +100,13 @@ services:
       - 9411:9411
 
   app:
+    container_name: temporalio-samples-php
+    image: ${DOCKER_IMAGE:-temporalio-samples-php}
     build:
       dockerfile: docker/app/Dockerfile
       context: ./
+      args:
+        PHP_VERSION: ${PHP_VERSION}
     # volumes:
     #  - ./app:/var/app
     depends_on:
