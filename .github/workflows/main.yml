@@ -53,5 +53,6 @@ jobs:
           file: docker/app/Dockerfile
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          pull: true
           push: true
           build-args: PHP_VERSION=8.3
