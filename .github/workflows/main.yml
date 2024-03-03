@@ -55,5 +55,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           push: true
-          cache-to: type=inline
-          cache-from: type=registry,ref=${{ fromJSON(steps.meta.outputs.json).tags[0] }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+#          cache-to: type=inline
+#          cache-from: type=registry,ref=${{ fromJSON(steps.meta.outputs.json).tags[0] }}
