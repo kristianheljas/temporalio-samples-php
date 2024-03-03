@@ -51,8 +51,9 @@ jobs:
         with:
           context: .
           file: docker/app/Dockerfile
+          build-args: PHP_VERSION=8.3
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          pull: true
           push: true
-          build-args: PHP_VERSION=8.3
+          cache-to: type=inline
+          cache-from: type=registry,ref=${{ fromJSON(steps.meta.outputs.json).tags[0] }}
