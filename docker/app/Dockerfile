@@ -40,3 +40,5 @@ RUN composer install
 RUN vendor/bin/rr get --no-interaction \
     && mv rr /usr/local/bin/rr \
     && chmod +x /usr/local/bin/rr
+
+CMD ["/usr/local/bin/wait-for-temporal.sh", "temporal", "/usr/local/bin/rr", "serve", "-c", "/var/app/.rr.yaml"]
